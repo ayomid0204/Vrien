@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vrien's Big Head</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 10px solid;
+            border-image: linear-gradient(45deg, #ff0000, #00ff00, #0000ff) 1;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, #ff00ff, transparent 30%);
+            animation: rotate 4s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            background: linear-gradient(45deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGradient 8s ease infinite, pulse 2s infinite;
+            margin-bottom: 30px;
+            text-shadow: 5px 5px 0px rgba(255, 0, 255, 0.3);
+            line-height: 1.2;
+        }
+
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .head-container {
+            position: relative;
+            margin: 40px auto;
+            width: 300px;
+            height: 300px;
+        }
+
+        .big-head {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #ffcc00, #ff8800);
+            border-radius: 50%;
+            position: relative;
+            animation: headFloat 3s ease-in-out infinite;
+            box-shadow: 0 0 50px rgba(255, 136, 0, 0.7);
+        }
+
+        @keyframes headFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .big-head::after {
+            content: 'BIG';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .eyes {
+            position: absolute;
+            top: 35%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            z-index: 2;
+        }
+
+        .eye {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .eye::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background-color: #0066ff;
+            border-radius: 50%;
+            animation: blink 3s infinite;
+        }
+
+        @keyframes blink {
+            0%, 45%, 55%, 100% { height: 30px; }
+            50% { height: 5px; }
+        }
+
+        .mouth {
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 50px;
+            background-color: #ff3366;
+            border-radius: 0 0 60px 60px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 200px;
+            padding: 25px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+        }
+
+        .feature i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-1 { background: linear-gradient(45deg, #ff3366, #ff0066); }
+        .feature-2 { background: linear-gradient(45deg, #3366ff, #0066ff); }
+        .feature-3 { background: linear-gradient(45deg, #33cc33, #00cc66); }
+        .feature-4 { background: linear-gradient(45deg, #ffcc00, #ff9900); }
+
+        .sparkle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: yellow;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+            z-index: 3;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            animation: confettiFall 5s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .counter {
+            font-size: 2.5rem;
+            margin: 30px 0;
+            background: linear-gradient(45deg, #aa00ff, #ff00aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: 5px dashed #ff00aa;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 20px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .head-container { width: 250px; height: 250px; }
+            .big-head::after { font-size: 3rem; }
+            .feature { min-width: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>VRIEN HAS A BIG HEAD!</h1>
+            
+            <div class="head-container">
+                <div class="big-head">
+                    <div class="eyes">
+                        <div class="eye left-eye"></div>
+                        <div class="eye right-eye"></div>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+            
+            <div class="counter">
+                <i class="fas fa-brain"></i> 
+                HEAD SIZE: <span id="headSize">100</span>% 
+                <i class="fas fa-brain"></i>
+            </div>
+            
+            <div class="features">
+                <div class="feature feature-1">
+                    <i class="fas fa-sun"></i>
+                    <div>Extra Bright</div>
+                </div>
+                <div class="feature feature-2">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>Full of Ideas</div>
+                </div>
+                <div class="feature feature-3">
+                    <i class="fas fa-rocket"></i>
+                    <div>Super Smart</div>
+                </div>
+                <div class="feature feature-4">
+                    <i class="fas fa-crown"></i>
+                    <div>Majestic</div>
+                </div>
+            </div>
+            
+            <footer>
+                <p><i class="fas fa-certificate"></i> Officially Certified Big Head <i class="fas fa-certificate"></i></p>
+                <p>This website proudly celebrates Vrien's magnificent cranial dimensions!</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Create sparkles
+        for (let i = 0; i < 20; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(sparkle);
+        }
+        
+        // Create confetti
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDelay = Math.random() * 5 + 's';
+            confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.body.appendChild(confetti);
+        }
+        
+        // Animate head size counter
+        let size = 100;
+        const sizeElement = document.getElementById('headSize');
+        setInterval(() => {
+            size = size + (Math.random() > 0.5 ? 1 : -1);
+            if (size < 80) size = 80;
+            if (size > 120) size = 120;
+            sizeElement.textContent = size;
+        }, 500);
+        
+        // Make the head clickable for fun
+        document.querySelector('.big-head').addEventListener('click', function() {
+            this.style.transform = 'scale(1.2)';
+            this.style.boxShadow = '0 0 80px rgba(255, 136, 0, 0.9)';
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.boxShadow = '0 0 50px rgba(255, 136, 0, 0.7)';
+            }, 300);
+            
+            // Add more confetti on click
+            for (let i = 0; i < 10; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = (Math.random() * 30 + 35) + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = '2s';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2000);
+            }
+        });
+        
+        // Make features interactive
+        document.querySelectorAll('.feature').forEach(feature => {
+            feature.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95) rotate(5deg)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
