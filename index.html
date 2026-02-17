@@ -3,389 +3,601 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vrien's Big Head</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Happy Birthday Vrien!</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
         }
-
+        
         body {
-            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            overflow-x: hidden;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            text-align: center;
+            align-items: center;
             padding: 20px;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            max-width: 1000px;
-            width: 100%;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            margin: 20px;
             position: relative;
-            overflow: hidden;
-            border: 10px solid;
-            border-image: linear-gradient(45deg, #ff0000, #00ff00, #0000ff) 1;
+            overflow-x: hidden;
         }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, #ff00ff, transparent 30%);
-            animation: rotate 4s linear infinite;
+        
+        /* Floating Hearts Animation */
+        .heart {
+            position: fixed;
+            font-size: 1.5rem;
+            animation: heartFloat 8s linear infinite;
             z-index: 0;
+            opacity: 0.3;
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
         }
-
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
+        
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
-
-        .content {
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 50px 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
             position: relative;
             z-index: 1;
-            background-color: white;
-            padding: 40px;
-            border-radius: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            animation: fadeIn 1.5s ease;
         }
-
-        h1 {
-            font-size: 5rem;
-            background: linear-gradient(45deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: textGradient 8s ease infinite, pulse 2s infinite;
-            margin-bottom: 30px;
-            text-shadow: 5px 5px 0px rgba(255, 0, 255, 0.3);
-            line-height: 1.2;
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        @keyframes textGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        
+        /* Decorative Elements */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            opacity: 0.6;
+            animation: confettiFall 6s linear infinite;
+            z-index: 2;
+            pointer-events: none;
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
-
-        .head-container {
+        
+        /* Header */
+        .birthday-header {
+            text-align: center;
+            margin-bottom: 40px;
             position: relative;
-            margin: 40px auto;
-            width: 300px;
-            height: 300px;
         }
-
-        .big-head {
+        
+        .birthday-header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(118, 75, 162, 0.8);
+            }
+        }
+        
+        .birthday-header h2 {
+            font-size: 2rem;
+            color: #4a5568;
+            font-weight: 400;
+        }
+        
+        .birthday-header h2 span {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #764ba2;
+        }
+        
+        /* Photo Frame */
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 5px;
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .photo-placeholder {
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, #ffcc00, #ff8800);
             border-radius: 50%;
-            position: relative;
-            animation: headFloat 3s ease-in-out infinite;
-            box-shadow: 0 0 50px rgba(255, 136, 0, 0.7);
-        }
-
-        @keyframes headFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .big-head::after {
-            content: 'BIG';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            font-weight: bold;
-            color: white;
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
-        }
-
-        .eyes {
-            position: absolute;
-            top: 35%;
-            width: 100%;
+            background: white;
             display: flex;
-            justify-content: space-around;
-            z-index: 2;
-        }
-
-        .eye {
-            width: 60px;
-            height: 60px;
-            background-color: white;
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-
-        .eye::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30px;
-            height: 30px;
-            background-color: #0066ff;
-            border-radius: 50%;
-            animation: blink 3s infinite;
-        }
-
-        @keyframes blink {
-            0%, 45%, 55%, 100% { height: 30px; }
-            50% { height: 5px; }
-        }
-
-        .mouth {
-            position: absolute;
-            bottom: 25%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 50px;
-            background-color: #ff3366;
-            border-radius: 0 0 60px 60px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        }
-
-        .features {
-            display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature {
-            flex: 1;
-            min-width: 200px;
-            padding: 25px;
-            border-radius: 20px;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            font-size: 5rem;
+            color: #764ba2;
+            animation: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-
-        .feature:hover {
+        
+        /* Memory Cards */
+        .memories {
+            margin: 40px 0;
+        }
+        
+        .memory-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .memory-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(45deg, #667eea, #764ba2) border-box;
+        }
+        
+        .memory-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
         }
-
-        .feature i {
+        
+        .memory-icon {
             font-size: 3rem;
             margin-bottom: 15px;
         }
-
-        .feature-1 { background: linear-gradient(45deg, #ff3366, #ff0066); }
-        .feature-2 { background: linear-gradient(45deg, #3366ff, #0066ff); }
-        .feature-3 { background: linear-gradient(45deg, #33cc33, #00cc66); }
-        .feature-4 { background: linear-gradient(45deg, #ffcc00, #ff9900); }
-
-        .sparkle {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: yellow;
-            border-radius: 50%;
-            animation: sparkle 2s infinite;
-            z-index: 3;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        .confetti {
-            position: fixed;
-            width: 15px;
-            height: 15px;
-            animation: confettiFall 5s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes confettiFall {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-
-        .counter {
-            font-size: 2.5rem;
-            margin: 30px 0;
-            background: linear-gradient(45deg, #aa00ff, #ff00aa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: bold;
-            padding: 15px 30px;
-            border-radius: 15px;
-            border: 5px dashed #ff00aa;
-        }
-
-        footer {
-            margin-top: 40px;
-            color: white;
+        
+        .memory-date {
             font-size: 1.2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            padding: 20px;
-            background-color: rgba(0,0,0,0.2);
-            border-radius: 15px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .head-container { width: 250px; height: 250px; }
-            .big-head::after { font-size: 3rem; }
-            .feature { min-width: 150px; }
+        
+        .memory-text {
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .memory-text .highlight {
+            font-weight: 700;
+            color: #764ba2;
+            font-style: italic;
+        }
+        
+        /* Qualities Section */
+        .qualities {
+            background: linear-gradient(135deg, #f6f9ff 0%, #f0e7ff 100%);
+            padding: 30px;
+            border-radius: 30px;
+            margin: 40px 0;
+        }
+        
+        .qualities h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: #4a5568;
+            margin-bottom: 25px;
+        }
+        
+        .quality-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .quality-tag {
+            padding: 12px 25px;
+            background: white;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4a5568;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .quality-tag:hover {
+            transform: scale(1.1);
+            border-color: #764ba2;
+            color: #764ba2;
+        }
+        
+        .quality-tag.beautiful {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+        }
+        
+        .quality-tag.strong {
+            background: linear-gradient(45deg, #a18cd1, #fbc2eb);
+        }
+        
+        .quality-tag.wise {
+            background: linear-gradient(45deg, #ffd89b, #ffb6c1);
+        }
+        
+        /* Special Message */
+        .special-message {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 30px;
+            border: 2px dashed #667eea;
+        }
+        
+        .special-message p {
+            font-size: 1.3rem;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .special-message .quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #764ba2;
+        }
+        
+        .date-stamp {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0;
+        }
+        
+        .date-stamp small {
+            font-size: 1rem;
+            color: #999;
+        }
+        
+        /* Birthday Wish */
+        .birthday-wish {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .wish-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .wish-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+        
+        .wish-button:active {
+            transform: translateY(0);
+        }
+        
+        .hidden-wish {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            color: #764ba2;
+            border: 3px solid #667eea;
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hidden-wish.show {
+            display: block;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e7ff;
+            color: #718096;
+            font-size: 1rem;
+        }
+        
+        .footer .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-top: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .birthday-header h1 {
+                font-size: 3rem;
+            }
+            
+            .birthday-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .birthday-header h2 span {
+                font-size: 2rem;
+            }
+            
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quality-tag {
+                padding: 8px 20px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Floating Hearts (generated by JavaScript) -->
+    <div id="hearts-container"></div>
+    
+    <!-- Confetti (generated by JavaScript) -->
+    <div id="confetti-container"></div>
+    
     <div class="container">
-        <div class="content">
-            <h1>VRIEN HAS A BIG HEAD!</h1>
-            
-            <div class="head-container">
-                <div class="big-head">
-                    <div class="eyes">
-                        <div class="eye left-eye"></div>
-                        <div class="eye right-eye"></div>
+        <!-- Header -->
+        <div class="birthday-header">
+            <h1>Happy Birthday!</h1>
+            <h2>To someone incredibly special, <span>Vrien</span></h2>
+        </div>
+        
+        <!-- Photo Frame -->
+        <div class="photo-frame">
+            <div class="photo-placeholder">
+                💜
+            </div>
+        </div>
+        
+        <!-- Special Memories -->
+        <div class="memories">
+            <div class="memory-title">✨ Moments I'll Always Remember ✨</div>
+            <div class="memory-grid">
+                <!-- Memory 1: November 30th -->
+                <div class="memory-card">
+                    <div class="memory-icon">📅</div>
+                    <div class="memory-date">November 30th • 1:00 PM</div>
+                    <div class="memory-text">
+                        "Are we doing a therapy session now?"<br>
+                        <span class="highlight">You burst into laughter</span>, and I knew right then I'd never forget that sound.
                     </div>
-                    <div class="mouth"></div>
+                </div>
+                
+                <!-- Memory 2: Recently -->
+                <div class="memory-card">
+                    <div class="memory-icon">💫</div>
+                    <div class="memory-date">Just the other day</div>
+                    <div class="memory-text">
+                        I told you how beautiful you are, and you said<br>
+                        <span class="highlight">"You just made my day"</span><br>
+                        But really, you make every day brighter.
+                    </div>
+                </div>
+                
+                <!-- Memory 3: Every time you smile -->
+                <div class="memory-card">
+                    <div class="memory-icon">😊</div>
+                    <div class="memory-date">Every single time</div>
+                    <div class="memory-text">
+                        Every time I've been lucky enough to make you smile.<br>
+                        <span class="highlight">Each one is a treasure</span> I keep close to my heart.
+                    </div>
                 </div>
             </div>
-            
-            <div class="counter">
-                <i class="fas fa-brain"></i> 
-                HEAD SIZE: <span id="headSize">100</span>% 
-                <i class="fas fa-brain"></i>
+        </div>
+        
+        <!-- Who Vrien Is -->
+        <div class="qualities">
+            <h3>This is who you are, Vrien</h3>
+            <div class="quality-tags">
+                <span class="quality-tag beautiful">✨ Beautiful</span>
+                <span class="quality-tag strong">💪 Strong</span>
+                <span class="quality-tag wise">🦉 Wise</span>
+                <span class="quality-tag">💜 Kind</span>
+                <span class="quality-tag">🌟 Genuine</span>
+                <span class="quality-tag">🎯 Real</span>
+                <span class="quality-tag">💝 Loved</span>
+                <span class="quality-tag">🌈 One of a kind</span>
             </div>
-            
-            <div class="features">
-                <div class="feature feature-1">
-                    <i class="fas fa-sun"></i>
-                    <div>Extra Bright</div>
-                </div>
-                <div class="feature feature-2">
-                    <i class="fas fa-lightbulb"></i>
-                    <div>Full of Ideas</div>
-                </div>
-                <div class="feature feature-3">
-                    <i class="fas fa-rocket"></i>
-                    <div>Super Smart</div>
-                </div>
-                <div class="feature feature-4">
-                    <i class="fas fa-crown"></i>
-                    <div>Majestic</div>
-                </div>
+        </div>
+        
+        <!-- Special Message -->
+        <div class="special-message">
+            <p>There's something about the way you laugh, Vrien. It's not just a sound—it's a moment. A photograph for the heart. And I'm so grateful to have been there for so many of them.</p>
+            <p class="quote">"The beautiful, strong, and wise person is you."</p>
+            <div class="date-stamp">
+                🗓️ 30/11/2025 • 1:14 PM<br>
+                <small>A day I'll never forget</small>
             </div>
-            
-            <footer>
-                <p><i class="fas fa-certificate"></i> Officially Certified Big Head <i class="fas fa-certificate"></i></p>
-                <p>This website proudly celebrates Vrien's magnificent cranial dimensions!</p>
-            </footer>
+        </div>
+        
+        <!-- Birthday Wish -->
+        <div class="birthday-wish">
+            <button class="wish-button" onclick="revealWish()">Click for your birthday wish 💜</button>
+            <div id="hiddenWish" class="hidden-wish">
+                Happy Birthday, Vrien.<br><br>
+                May your year be filled with as much joy as you've given me.<br>
+                May you always laugh the way you did that November afternoon.<br>
+                And may you always know just how beautiful, strong, and wise you truly are.<br><br>
+                With all the warmth in my heart,<br>
+                <span style="font-family: 'Dancing Script', cursive; font-size: 2rem;">💜</span>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            Made with 💜 just for you<br>
+            <div class="signature">For Vrien, on her birthday</div>
         </div>
     </div>
-
+    
     <script>
-        // Create sparkles
-        for (let i = 0; i < 20; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.top = Math.random() * 100 + 'vh';
-            sparkle.style.animationDelay = Math.random() * 2 + 's';
-            document.body.appendChild(sparkle);
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartSymbols = ['💜', '💖', '💕', '💗', '💓', '💘', '💝'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                    heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                    heart.style.animationDelay = Math.random() * 5 + 's';
+                    heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    container.appendChild(heart);
+                }, i * 200);
+            }
         }
         
         // Create confetti
-        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-        for (let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.animationDelay = Math.random() * 5 + 's';
-            confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            document.body.appendChild(confetti);
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#667eea', '#764ba2', '#ffd700', '#ff6b6b', '#4ecdc4', '#ff9ff6'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                    confetti.style.animationDelay = Math.random() * 5 + 's';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                    container.appendChild(confetti);
+                }, i * 100);
+            }
         }
         
-        // Animate head size counter
-        let size = 100;
-        const sizeElement = document.getElementById('headSize');
-        setInterval(() => {
-            size = size + (Math.random() > 0.5 ? 1 : -1);
-            if (size < 80) size = 80;
-            if (size > 120) size = 120;
-            sizeElement.textContent = size;
-        }, 500);
-        
-        // Make the head clickable for fun
-        document.querySelector('.big-head').addEventListener('click', function() {
-            this.style.transform = 'scale(1.2)';
-            this.style.boxShadow = '0 0 80px rgba(255, 136, 0, 0.9)';
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.boxShadow = '0 0 50px rgba(255, 136, 0, 0.7)';
-            }, 300);
+        // Reveal birthday wish
+        function revealWish() {
+            const wish = document.getElementById('hiddenWish');
+            wish.classList.toggle('show');
             
-            // Add more confetti on click
-            for (let i = 0; i < 10; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = (Math.random() * 30 + 35) + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDuration = '2s';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 2000);
-            }
-        });
-        
-        // Make features interactive
-        document.querySelectorAll('.feature').forEach(feature => {
-            feature.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95) rotate(5deg)';
+            // Add more confetti when button is clicked
+            for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
-                    this.style.transform = '';
-                }, 300);
-            });
-        });
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    confetti.style.background = ['#667eea', '#764ba2', '#ffd700'][Math.floor(Math.random() * 3)];
+                    confetti.style.width = (Math.random() * 8 + 4) + 'px';
+                    confetti.style.height = (Math.random() * 8 + 4) + 'px';
+                    document.getElementById('confetti-container').appendChild(confetti);
+                }, i * 50);
+            }
+        }
+        
+        // Initialize animations
+        window.onload = function() {
+            createHearts();
+            createConfetti();
+        };
     </script>
 </body>
 </html>
